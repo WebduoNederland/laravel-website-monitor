@@ -7,17 +7,17 @@
     <div class="grid grid-cols-3 gap-x-3 mt-5">
         <div class="bg-white rounded-md shadow-sm p-2">
             <p class="text-gray-500">@lang('CPU')</p>
-            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest->current_cpu_usage }}%</p>
+            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest?->current_cpu_usage ?? '-' }}%</p>
         </div>
 
         <div class="bg-white rounded-md shadow-sm p-2">
             <p class="text-gray-500">@lang('RAM')</p>
-            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest->current_memory_usage }}/{{ $website->monitorEntriesLatest->current_memory_total }} <span class="text-lg text-gray-300">MB</span></p>
+            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest?->current_memory_usage ?? '-' }}/{{ $website->monitorEntriesLatest?->current_memory_total ?? '-' }} <span class="text-lg text-gray-300">MB</span></p>
         </div>
 
         <div class="bg-white rounded-md shadow-sm p-2">
             <p class="text-gray-500">@lang('Disk')</p>
-            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest->current_disk_usage_percentage }}%</p>
+            <p class="text-primary font-bold text-2xl">{{ $website->monitorEntriesLatest?->current_disk_usage_percentage ?? '-' }}%</p>
         </div>
     </div>
 </div>
