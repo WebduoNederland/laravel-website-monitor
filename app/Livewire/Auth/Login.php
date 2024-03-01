@@ -4,6 +4,7 @@ namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class Login extends Component
 {
@@ -19,7 +20,7 @@ class Login extends Component
         ];
     }
 
-    public function login(): mixed
+    public function login(): ?Redirector
     {
         $this->validate();
 
@@ -28,6 +29,10 @@ class Login extends Component
 
             return redirect()->intended('dashboard');
         }
+
+        $this->addError('combination', __('The given combination of the email address and password is not recognized'));
+
+        return null;
     }
 
     public function render()
