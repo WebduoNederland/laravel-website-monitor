@@ -34,5 +34,7 @@
         @foreach ($websites as $website)
             <x-website-row :website="$website" />
         @endforeach
+
+        {{ $websites->links() }}
     </div>
 </div>

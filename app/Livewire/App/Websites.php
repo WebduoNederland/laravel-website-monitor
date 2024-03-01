@@ -3,13 +3,15 @@
 namespace App\Livewire\App;
 
 use App\Models\User;
-use App\Models\Website;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Websites extends Component
 {
+    use WithPagination;
+
     public bool $showWebsiteCreation = false;
 
     public string $newWebsiteDomain = '';
@@ -44,11 +46,11 @@ class Websites extends Component
         /** @var User $user */
         $user = auth()->user();
 
-        /** @var Collection<int, Website> $websites */
+        /** @var LengthAwarePaginator $websites */
         $websites = $user->activeTeam
             ->websites()
             ->with('monitorEntriesLatest')
-            ->get();
+            ->paginate(4);
 
         return view('livewire.app.websites', [
             'websites' => $websites,
