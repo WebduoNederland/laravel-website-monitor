@@ -35,7 +35,7 @@ class Websites extends Component
 
         $this->showWebsiteCreation = false;
 
-        // TODO: Toast notification
+        // TODO: Redirect to website specific page
     }
 
     public function render(): View
