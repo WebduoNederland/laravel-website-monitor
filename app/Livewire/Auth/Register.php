@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -40,18 +41,26 @@ class Register extends Component
     {
         $this->validate();
 
-        User::create([
+        /** @var ?User $user */
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
         ]);
 
-        $this->redirect(route('login'));
+        if ($user) {
+            Auth::loginUsingId($user->id, true);
+
+            $this->redirect(route('dashboard'));
+        } else {
+            $this->addError('email', __('Something went wrong...'));
+        }
     }
 
     public function render(): View
     {
         return view('livewire.auth.register')
-            ->layout('components.layouts.guest');
+            ->layout('components.layouts.guest')
+            ->title('Register');
     }
 }
