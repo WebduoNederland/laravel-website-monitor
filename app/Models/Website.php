@@ -52,4 +52,17 @@ class Website extends Model
     {
         return $this->hasOne(WebsiteMonitorEntry::class, 'website_id', 'id')->latest();
     }
+
+    public function getStatusAttribute(): string
+    {
+        if (! $this->last_heartbeat_received) {
+            return 'pending';
+        }
+
+        if ($this->last_heartbeat_received->diffInSeconds() >= 30) {
+            return 'offline';
+        }
+
+        return 'online';
+    }
 }

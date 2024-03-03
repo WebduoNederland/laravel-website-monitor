@@ -22,7 +22,7 @@ class Register extends Component
             abort(403);
         }
     }
-    
+
     public function rules(): array
     {
         return [
