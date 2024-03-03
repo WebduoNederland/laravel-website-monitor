@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
 use App\Livewire\App\Dashboard;
 use App\Livewire\App\Websites;
 use App\Livewire\Auth\Login;
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('logout', LogoutController::class)
+    ->name('logout');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', Login::class)
