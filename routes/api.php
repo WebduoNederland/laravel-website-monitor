@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\MonitorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\MonitorController;
+use App\Http\Middleware\LaravelWebsiteMonitorClientMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->group(function (): void {
+Route::prefix('v1')->middleware([LaravelWebsiteMonitorClientMiddleware::class])->group(function (): void {
     Route::post('monitor', [MonitorController::class, 'save']);
 });

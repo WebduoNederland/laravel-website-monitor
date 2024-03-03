@@ -16,6 +16,13 @@ class Register extends Component
 
     public string $password_confirmation = '';
 
+    public function mount(): void
+    {
+        if (! config('laravel-website-monitor.allow_registration')) {
+            abort(403);
+        }
+    }
+    
     public function rules(): array
     {
         return [
