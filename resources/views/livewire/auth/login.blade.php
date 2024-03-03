@@ -10,14 +10,14 @@
             <x-form.input type="password" wire:model="password" :placeholder="__('Password')" class="w-full" required />
         </x-label>
         <div class="space-y-2">
-            <x-button.primary type="submit" class="w-full">Login</x-button.primary>
+            <x-button.primary type="submit" class="w-full">@lang('Login')</x-button.primary>
             @if (config('laravel-website-monitor.allow_registration'))
                 <div class="w-full flex items-center space-x-5">
                     <div class="w-1/2 h-0.5 bg-gray-100 rounded-l"></div>
                     <span>@lang('OR')</span>
                     <div class="w-1/2 h-0.5 bg-gray-100 rounded-r"></div>
                 </div>
-                <a href="{{ route('register') }}" class="block"><x-button.secondary type="button" class="w-full">Create new account</x-button.secondary></a>
+                <a href="{{ route('register') }}" class="block" wire:navigate><x-button.secondary type="button" class="w-full">@lang('Create new account')</x-button.secondary></a>
             @endif
         </div>
     </form>
