@@ -3,12 +3,11 @@
 namespace App\Livewire\App\Websites;
 
 use App\Models\User;
-use Livewire\Component;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
+use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class WebsiteList extends Component
 {

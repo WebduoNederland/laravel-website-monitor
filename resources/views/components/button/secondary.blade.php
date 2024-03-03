@@ -1,0 +1,1 @@
+<x-button.index class="bg-gray-100 hover:bg-gray-200 text-black" {{ $attributes }}>{{ $slot }}</x-button.index>

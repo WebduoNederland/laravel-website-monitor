@@ -15,7 +15,7 @@ class WebsiteMonitorEntryObserver
             if (! $website) {
                 return;
             }
-            
+
             $website->timestamps = false;
 
             $website->update([
