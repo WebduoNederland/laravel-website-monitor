@@ -22,7 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property ?int $active_team_id
  * @property ?Carbon $created_at
  * @property ?Carbon $updated_at
- * @property ?Team $activeTeam
+ * @property Team $activeTeam
  */
 #[ObservedBy([UserObserver::class])]
 class User extends Authenticatable

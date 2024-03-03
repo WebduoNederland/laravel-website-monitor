@@ -4,6 +4,7 @@ namespace App\Livewire\Auth;
 
 use App\Models\User;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Register extends Component
@@ -48,7 +49,7 @@ class Register extends Component
         $this->redirect(route('login'));
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.auth.register')
             ->layout('components.layouts.guest');

@@ -13,7 +13,7 @@ class Menu extends Component
 
     public function mount(): void
     {
-        $this->routeName = request()->route()->getName();
+        $this->routeName = request()->route()?->getName();
 
         $this->open = session('menu_open', true);
     }

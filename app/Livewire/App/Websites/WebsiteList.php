@@ -3,11 +3,12 @@
 namespace App\Livewire\App\Websites;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
+use Livewire\Component;
 use Illuminate\View\View;
 use Livewire\Attributes\Url;
-use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class WebsiteList extends Component
 {
@@ -25,7 +26,7 @@ class WebsiteList extends Component
         $websites = $user->activeTeam
             ->websites()
             ->with('monitorEntriesLatest')
-            ->when(! blank($this->search), fn (Builder $query): Builder => $query->where('domain', 'like', "%$this->search%")->orWhere('name', 'like', "%$this->search%"))
+            ->when(! blank($this->search), fn ($query) => $query->where('domain', 'like', "%$this->search%")->orWhere('name', 'like', "%$this->search%"))
             ->paginate(4);
 
         return view('livewire.app.websites.website-list', [
