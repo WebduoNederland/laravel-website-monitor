@@ -2,6 +2,7 @@
 
 namespace App\Livewire\App\Components;
 
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Menu extends Component
@@ -24,7 +25,7 @@ class Menu extends Component
         session(['menu_open' => $this->open]);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.app.components.menu');
     }

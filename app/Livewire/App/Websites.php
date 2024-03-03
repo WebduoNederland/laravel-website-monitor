@@ -3,22 +3,19 @@
 namespace App\Livewire\App;
 
 use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Websites extends Component
 {
-    use WithPagination;
-
     public bool $showWebsiteCreation = false;
 
     public string $newWebsiteDomain = '';
 
     public string $newWebsiteName = '';
 
-    public function addWebsite()
+    public function addWebsite(): void
     {
         $this->validate([
             'newWebsiteDomain' => 'required',
@@ -28,7 +25,7 @@ class Websites extends Component
         /** @var User $user */
         $user = auth()->user();
 
-        $website = $user->activeTeam->websites()->create([
+        $user->activeTeam->websites()->create([
             'created_by_id' => $user->id,
             'updated_by_id' => $user->id,
             'domain' => $this->newWebsiteDomain,
@@ -41,20 +38,9 @@ class Websites extends Component
         // TODO: Toast notification
     }
 
-    public function render()
+    public function render(): View
     {
-        /** @var User $user */
-        $user = auth()->user();
-
-        /** @var LengthAwarePaginator $websites */
-        $websites = $user->activeTeam
-            ->websites()
-            ->with('monitorEntriesLatest')
-            ->paginate(4);
-
-        return view('livewire.app.websites', [
-            'websites' => $websites,
-        ])
+        return view('livewire.app.websites')
             ->title('Websites');
     }
 }

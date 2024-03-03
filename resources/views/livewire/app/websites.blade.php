@@ -29,12 +29,5 @@
         </x-popup-form>
     @endif
 
-    {{-- Website list --}}
-    <div class="w-full p-5 space-y-8">
-        @foreach ($websites as $website)
-            <x-website-row :website="$website" />
-        @endforeach
-
-        {{ $websites->links() }}
-    </div>
+    <livewire:app.websites.website-list />
 </div>
