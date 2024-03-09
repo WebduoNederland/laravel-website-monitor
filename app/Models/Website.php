@@ -59,7 +59,7 @@ class Website extends Model
             return 'pending';
         }
 
-        if ($this->last_heartbeat_received->diffInSeconds() >= 30) {
+        if ($this->last_heartbeat_received->diffInSeconds() >= 50) {
             return 'offline';
         }
 
