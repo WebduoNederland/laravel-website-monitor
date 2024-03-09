@@ -3,12 +3,17 @@
 
     <form wire:submit="login" class="bg-white p-4 rounded-md w-full max-w-[400px] space-y-3">
         <x-label :text="$errors->first('combination')" class="w-full text-red-400" />
+
         <x-label :text="$errors->first('email')" @class(["w-full", "text-red-400" => $errors->has('email')])>
             <x-form.input type="email" wire:model="email" :placeholder="__('Email')" class="w-full" required />
         </x-label>
+
         <x-label :text="$errors->first('password')" @class(["w-full", "text-red-400" => $errors->has('password')])>
             <x-form.input type="password" wire:model="password" :placeholder="__('Password')" class="w-full" required />
         </x-label>
+
+        <x-form.checkbox :label="__('Remember me')" model="remember" />
+        
         <div class="space-y-2">
             <x-button.primary type="submit" class="w-full">@lang('Login')</x-button.primary>
             @if (config('laravel-website-monitor.allow_registration'))
