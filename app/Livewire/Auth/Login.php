@@ -12,6 +12,8 @@ class Login extends Component
 
     public string $password = '';
 
+    public bool $remember = false;
+
     public function rules(): array
     {
         return [
@@ -24,7 +26,7 @@ class Login extends Component
     {
         $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             request()->session()->regenerate();
 
             return redirect()->intended(route('dashboard'));
