@@ -5,15 +5,19 @@
         <x-label :text="$errors->first('name')" @class(["w-full", "text-red-400" => $errors->has('name')])>
             <x-form.input type="text" wire:model="name" :placeholder="__('Name')" class="w-full" required />
         </x-label>
+
         <x-label :text="$errors->first('email')" @class(["w-full", "text-red-400" => $errors->has('email')])>
             <x-form.input type="email" wire:model="email" :placeholder="__('Email')" class="w-full" required />
         </x-label>
+
         <x-label :text="$errors->first('password')" @class(["w-full", "text-red-400" => $errors->has('password')])>
             <x-form.input type="password" wire:model="password" :placeholder="__('Password')" class="w-full" required />
         </x-label>
+
         <x-label :text="$errors->first('password_confirmation')" @class(["w-full", "text-red-400" => $errors->has('password_confirmation')])>
             <x-form.input type="password" wire:model="password_confirmation" :placeholder="__('Password confirmation')" class="w-full" required />
         </x-label>
+
         <div class="space-y-2">
             <x-button.primary type="submit" class="w-full">@lang('Register')</x-button.primary>
             <div class="w-full flex items-center space-x-5">
